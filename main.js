@@ -10,6 +10,14 @@ function addFile(e) {
     [].forEach.call(files, function (currentFile) {
       console.log(currentFile);
 
+      if (currentFile.size > 5242880) {
+        var err = document.querySelector('.error');
+        err.classList.remove('none');
+        err.classList.remove('error');
+        err.classList.add('error');
+        return false;
+      }
+
       var reader = new FileReader();
 
       reader.onload = function (e) {
@@ -83,6 +91,10 @@ input.addEventListener('click', function (e) {
   if (document.querySelector('span.toggle').classList.contains('none')) {
     e.preventDefault();
     e.stopPropagation();
+  }
+
+  if (!document.querySelector('.error').classList.contains('none')) {
+    document.querySelector('.error').classList.add('none');
   }
 });
 
