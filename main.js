@@ -79,6 +79,13 @@ input.addEventListener('drop', function (e) {
   addFile(e);
 });
 
+input.addEventListener('click', function (e) {
+  if (document.querySelector('span.toggle').classList.contains('none')) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+});
+
 document.querySelector('.remove').addEventListener('click', function () {
   var button = document.querySelectorAll('.toggle'),
       checkbox = document.querySelectorAll('input[type="checkbox"'),
