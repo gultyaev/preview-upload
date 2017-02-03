@@ -84,7 +84,11 @@ input.addEventListener('change', function (e) {
   addFile(e);
 });
 input.addEventListener('drop', function (e) {
-  addFile(e);
+  if (document.querySelector('span.toggle').classList.contains('none')) {
+    e.preventDefault();
+  } else {
+    addFile(e);
+  }
 });
 
 input.addEventListener('click', function (e) {
